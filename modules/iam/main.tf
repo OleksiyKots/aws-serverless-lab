@@ -1,4 +1,3 @@
-# Базова політика довіри для всіх Lambda-функцій
 data "aws_iam_policy_document" "lambda_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -9,7 +8,6 @@ data "aws_iam_policy_document" "lambda_assume_role" {
   }
 }
 
-# 1. Роль для get-all-authors
 resource "aws_iam_role" "get_all_authors" {
   name               = "${var.namespace}-${var.stage}-get-all-authors-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
@@ -26,7 +24,6 @@ resource "aws_iam_role_policy" "get_all_authors" {
   })
 }
 
-# 2. Роль для get-all-courses
 resource "aws_iam_role" "get_all_courses" {
   name               = "${var.namespace}-${var.stage}-get-all-courses-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
@@ -43,7 +40,6 @@ resource "aws_iam_role_policy" "get_all_courses" {
   })
 }
 
-# 3. Роль для get-course
 resource "aws_iam_role" "get_course" {
   name               = "${var.namespace}-${var.stage}-get-course-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
@@ -60,7 +56,6 @@ resource "aws_iam_role_policy" "get_course" {
   })
 }
 
-# 4. Роль для save-course та update-course
 resource "aws_iam_role" "put_course" {
   name               = "${var.namespace}-${var.stage}-put-course-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
@@ -77,7 +72,6 @@ resource "aws_iam_role_policy" "put_course" {
   })
 }
 
-# 5. Роль для delete-course
 resource "aws_iam_role" "delete_course" {
   name               = "${var.namespace}-${var.stage}-delete-course-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
