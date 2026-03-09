@@ -162,11 +162,11 @@ resource "aws_api_gateway_integration" "put_course_lambda" {
     "application/json" = <<EOF
 {
   "id": "$input.params('id')",
-  "title": "$input.json('$.title')",
-  "authorId": "$input.json('$.authorId')",
-  "length": "$input.json('$.length')",
-  "category": "$input.json('$.category')",
-  "watchHref": "$input.json('$.watchHref')"
+  "title": $input.json('$.title'),
+  "authorId": $input.json('$.authorId'),
+  "length": $input.json('$.length'),
+  "category": $input.json('$.category'),
+  "watchHref": $input.json('$.watchHref')
 }
 EOF
   }
